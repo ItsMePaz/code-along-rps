@@ -9,6 +9,8 @@
   </head>
   <body>
     <div class="game">
+      <h1 id="results-announcement" class="results-announcement"></h1>
+
       <section class="scoreboard">
         <div class="player-score">
           <h1>Player</h1>
@@ -20,23 +22,23 @@
         </div>
         <div class="computer-score">
           <h1>Computer</h1>
-          <p id="computer-score-label">0</p>
+          <p id="ai-score-label">0</p>
         </div>
       </section>
       <!-- Player Weapon Pick -->
-      <section class="turns-contcomputerner">
-        <div class="player-pick-contcomputerner">
+      <section class="turns-container">
+        <div class="player-pick-container">
           <h2 id="player-pick">#</h2>
         </div>
-        <div class="computer-pick-contcomputerner">
-          <h2 id="computer-pick">#</h2>
+        <div class="ai-pick-container">
+          <h2 id="ai-pick">#</h2>
         </div>
       </section>
       <!-- Weapon Choices -->
-      <section class="weapons-contcomputerner">
-        <button class="rock">Rock</button>
-        <button class="paper">Paper</button>
-        <button class="scissors">Scissors</button>
+      <section class="weapons-container">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissor">Scissors</button>
       </section>
     </div>
     <script src="javascript/script.js"></script>

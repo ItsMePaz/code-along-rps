@@ -1,64 +1,62 @@
 const playerScoreLabel = document.getElementById("player-score-label");
 const tiesScoreLabel = document.getElementById("ties-score-label");
-const computerScoreLabel = document.getElementById("computer-score-label");
+const computerScoreLabel = document.getElementById("ai-score-label");
 const playerPick = document.getElementById("player-pick");
 const aiPick = document.getElementById("ai-pick");
 const weaponsButtons = document.querySelectorAll("button");
+const resultsAnnouncement = document.getElementById("results-announcement");
+
+resultsAnnouncement.textContent = "You Won!";
 
 let playerScore = 0;
-let computerScore = 0;
+let aiScore = 0;
 let tieScore = 0;
 
-weaponsButtons.forEach((weaponButton) => {
-  weaponButton.addEventListener("click", () => {
-    console.log(weaponButton.id);
-  });
-});
-
 function getComputerSelection() {
-  const weapons = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * weapons.length - 1);
-  return weapons[randomIndex];
+  const weapon = ["rock", "paper", "scissor"];
+  const randomIndex = Math.floor(Math.random() * weapon.length);
+  return weapon[randomIndex];
 }
 
-const playRound = (playerSelection, computerSelection) => {
+function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return "Tie";
+    return "It is a Tie";
   } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") ||
-    (playerSelection === "scissors" && computerSelection === "paper")
+    (playerSelection === "rock" && computerSelection === "scissor") ||
+    (playerSelection === "scissor" && computerSelection === "paper")
   ) {
-    return "You win";
+    return "You Win!";
   } else {
-    return "You lose";
+    return "You Lose!";
   }
-};
+}
 
-const gameHandler = (playerSelection) => {
-  const computerSelection = getComputerSelection();
-  //playerSelection
+const gameHandler = (playerSelection, aiSelection) => {
   playerPick.textContent = playerSelection;
-  //update the player turn
-  //computerSelection
-  aiPick.textContent = computerSelection;
-  //update the computer turn
-  const result = playRound(playerSelection, computerSelection);
+  aiPick.textContent = aiSelection;
 
-  if (result === "You Win") {
+  const result = playRound(playerSelection, aiSelection);
+
+  if (result === "You Win!") {
     playerScore++;
     playerScoreLabel.textContent = playerScore;
-  } else if (result === "You Lose") {
-    computerScore++;
-    computerScoreLabel.textContent = computerScore;
+  } else if (result === "You Lose!") {
+    aiScore++;
+    computerScoreLabel.textContent = aiScore;
   } else {
     tieScore++;
     tiesScoreLabel.textContent = tieScore;
   }
-  //playRound
-  //updateScore
 };
 
 weaponsButtons.forEach((weaponButton) => {
-  weaponButton.addEventListener("click", () => gameHandler(weaponButton.id));
+  weaponButton.addEventListener("click", () =>
+    gameHandler(weaponButton.id, getComputerSelection())
+  );
 });
+
+/* 
+let playerScore = 0;
+let aiScore = 0;
+let tieScore = 0; */

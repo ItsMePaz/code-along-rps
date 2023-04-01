@@ -5,6 +5,11 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+.results-announcement {
+  font-size: 60px;
+  border: 1px solid black;
+  padding: 0px 50px 10px 50px;
+}
 .game {
   background-color: beige;
   height: 100vh;
